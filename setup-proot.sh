@@ -1,10 +1,11 @@
 #!/usr/bin/bash
 
 distro=debian
-session=xfce4
 rep=apt
-name="$distro-hwac"
+stable="$distro-hwac"
 browser=firefox-esr
+dependencies=true
+stable_pcgs="https://github.com/moio9/proot-hwac/releases/latest"
 
 
 function alias_proot {
@@ -20,6 +21,13 @@ function alias_proot {
   chmod +x /data/data/com.termux/files/usr/bin/hwac
 }
   
+emu_set(){
+  mkdir packages
+  cd packages
+  wget --no-parent -r -l1 -A.deb $stable_pcgs
+  dpkg -i *.deb
+
+}
 
 while getopts b:a:t: opts; do
   case $opts} in
@@ -38,3 +46,8 @@ apt install $session
 apt install lutris
 
 alias_proot
+
+if [ "$dependencies" = true ]
+  then
+    emu_set
+fi
