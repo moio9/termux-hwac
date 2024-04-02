@@ -24,10 +24,11 @@ function alias_proot {
 emu_set(){
   mkdir -p packages
   cd packages || exit 1
-  wget -qO- "$stable_pcg" | \
-  grep -o -m 1 'href=".*.deb"' | \
-  grep -o 'http.*.deb' | \
-  xargs -n 1 wget -P ./
+  wget $stable_pcgs \
+  | grep "browser_download_url.*deb" \
+  | cut -d : -f 2,3 \
+  | tr -d \" \
+  | wget -qi -
   dpkg -i *.deb
 
 }
