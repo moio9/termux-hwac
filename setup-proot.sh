@@ -49,5 +49,6 @@ alias_proot
 
 if [ "$dependencies" = true ]
   then
+    echo Installing dependencies.
     emu_set
 fi
