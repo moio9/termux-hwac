@@ -5,7 +5,7 @@ rep=apt
 stable="$distro-hwac"
 browser=firefox-esr
 dependencies=true
-stable_pcgs="https://github.com/moio9/proot-hwac/releases/latest"
+stable_pcgs="https://github.com/moio9/proot-hwac/releases/download/deb/dep.tar.xz"
 
 
 function alias_proot {
@@ -24,11 +24,8 @@ function alias_proot {
 emu_set(){
   mkdir -p packages
   cd packages || exit 1
-  wget $stable_pcgs \
-  | grep "browser_download_url.*deb" \
-  | cut -d : -f 2,3 \
-  | tr -d \" \
-  | wget -qi -
+  wget $stable_pcgs
+  tar -xf dep.tar.xz
   dpkg -i *.deb
 
 }
