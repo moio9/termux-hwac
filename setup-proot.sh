@@ -22,8 +22,8 @@ function alias_proot {
 }
   
 emu_set(){
-  mkdir packages
-  cd packages
+  mkdir -p packages
+  cd packages || exit 1
   wget -qO- "$stable_pcg" | \
   grep -o -m 1 'href=".*.deb"' | \
   grep -o 'http.*.deb' | \
@@ -53,6 +53,6 @@ alias_proot
 
 if [ "$dependencies" = true ]
   then
-    echo Installing dependencies.
+    echo "Installing dependencies."
     emu_set
 fi
