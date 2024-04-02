@@ -25,7 +25,9 @@ emu_set(){
   cd proot-hwac
   mkdir packages
   cd packages
-  wget --no-parent -r -l1 -A.deb $stable_pcgs
+  wget -qO- "https://github.com/utilizator/repozitoriu/releases/latest" | \
+  grep -o -m 1 'https://.*.deb' | \
+  xargs -n 1 wget -P ./
   dpkg -i *.deb
 
 }
