@@ -22,9 +22,10 @@ function alias_proot {
 }
   
 emu_set(){
-  cd packages || exit 1
   wget $stable_pcgs
-  tar -xf dep.tar.xz
+  tar -xvf dep.tar
+  rm dep.tar
+  cd package || exit 1
   dpkg -i *.deb
 
 }
