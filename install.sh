@@ -53,7 +53,8 @@ pkg upgrade
 pkg install pulseaudio
 pkg install x11-repo
 pkg install termux-x11-nightly
-pkg install proot-distro 
+pkg install proot-distro
+pkg install wget
 
 setup_termux
 
