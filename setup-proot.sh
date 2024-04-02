@@ -22,10 +22,9 @@ function alias_proot {
 }
   
 emu_set(){
-  cd proot-hwac
   mkdir packages
   cd packages
-  wget -qO- $stable_pcg | \
+  wget -qO- "$stable_pcg" | \
   grep -o -m 1 'href=".*.deb"' | \
   grep -o 'http.*.deb' | \
   xargs -n 1 wget -P ./
