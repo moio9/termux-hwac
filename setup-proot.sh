@@ -22,6 +22,7 @@ function alias_proot {
 }
   
 emu_set(){
+  cd proot-hwac
   mkdir packages
   cd packages
   wget --no-parent -r -l1 -A.deb $stable_pcgs
