@@ -44,6 +44,7 @@ apt install $browser
 apt install glmark2
 apt install $session
 apt install lutris
+apt install wget
 
 alias_proot
 
