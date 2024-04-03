@@ -15,7 +15,7 @@ function alias_proot {
   echo $path"/termux11 k">>"$path/hwac"
   echo "pulseaudio --start --exit-idle-time=-1 &">>"$path/hwac"
   echo "am start -n com.termux.x11/com.termux.x11.MainActivity">>"$path/hwac"
-  echo 'proot-distro login debian-hwac --shared-tmp -- bash termux11 $1'>>"$path/hwac"
+  echo 'proot-distro login debian-hwac --shared-tmp -- bash termux11 n'>>"$path/hwac"
 
   chmod +x /data/data/com.termux/files/usr/bin/hwac
 }
