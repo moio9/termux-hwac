@@ -18,14 +18,14 @@ function setup_termux {
   cat << EOF > /data/data/com.termux/files/usr/bin/termux11
 #!/data/data/com.termux/files/usr/bin/bash
 
-if [ "\$1" -ne "n" ]
+if [ "\$1" != "n" ]
   then
     pkill -f app_proces
     pkill -f pulseaudio*
      
 fi
 
-if [ "\$1" -ne "k"] 
+if [ "\$1" != "k" ] 
   then
 
     am start -n com.termux.x11/com.termux.x11.MainActivity
