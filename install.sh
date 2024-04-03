@@ -17,20 +17,23 @@ function setup_termux {
 
   cat << EOF > /data/data/com.termux/files/usr/bin/termux11
 #!/data/data/com.termux/files/usr/bin/bash
-pkill -f app_proces
-pkill -f pulseaudio*
 
-if [ "\$#" -eq 0 ] 
+if [ "\$1" -ne "n" ]
   then
-    export PULSE_SERVER=127.0.0.1
+    pkill -f app_proces
+    pkill -f pulseaudio*
+     
+fi
+
+if [ "\$1" -ne "k"] 
+  then
 
     am start -n com.termux.x11/com.termux.x11.MainActivity
     sleep 5 && pulseaudio &
 
     env DISPLAY=:0
     termux-x11 :0 -xstartup "dbus-launch --exit-with-session '$env-session'"
-    
-    export PULSE_SERVER=127.0.0.1 && pulseaudio --start --disable-shm=1 --exit-idle-time=-1 
+     
 fi
 EOF
 
