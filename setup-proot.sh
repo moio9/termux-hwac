@@ -40,12 +40,8 @@ done
 
 apt update
 apt upgrade
-apt install pulseaudio
-apt install $browser
-apt install glmark2
-apt install $session
-apt install lutris
-apt install wget
+apt install pulseaudio $browser
+glmark2 $session lutris wget
 
 alias_proot
 
