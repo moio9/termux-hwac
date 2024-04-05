@@ -53,11 +53,11 @@ done
 termux-setup-storage
 pkg update
 pkg upgrade
-pkg install pulseaudio
-pkg install x11-repo
-pkg install termux-x11-nightly
-pkg install proot-distro
-pkg install wget
+pkg install -y tur-repo x11-repo
+pkg install -y pulseaudio termux-x11-nightly proot-distro wget
+pkg install -y freetype git gnutls libandroid-shmem-static libx11 xorgproto libdrm libpixman libxfixes libjpeg-turbo mesa-demos osmesa pulseaudio termux-x11-nightly vulkan-tools xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
+pkg install -y vulkan-tools vulkan-loader-android mesa-zink
+pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 
 setup_termux
 
