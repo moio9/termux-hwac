@@ -13,7 +13,7 @@ desktop_termux=true
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 
 function launcher {
-    cat << EOF > /data/data/com.termux/files/home/Desktop
+    cat << EOF > '/data/data/com.termux/files/home/Desktop/Wine Explorer.desktop'
     [Desktop Entry]
     Version=1.0
     Type=Application
@@ -89,7 +89,7 @@ pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
-pkg install -y box64-glibc mesa-vulkan-icd-freedren-glibc mangohud-glibc
+pkg install -y box64-glibc mesa-vulkan-icd-freedreno-glibc mangohud-glibc mesa-zink-glibc
 termux-setup-storage
 setup_termux
 
@@ -114,8 +114,8 @@ fi
 termux-libs
 chmod +x bine.sh
 chmod +x dxvk_in.sh
-ln -s bine.sh $PREFIX/glibc/bin/bine
-ln -s bine.sh $PREFIX/bin
+cp bine.sh $PREFIX/glibc/bin/bine
+ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
 dxvk_in.sh
 launcher
