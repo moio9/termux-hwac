@@ -115,6 +115,6 @@ termux-libs
 ln -s bine.sh $PREFIX/glibc/bin/bine
 ln -s bine.sh $PREFIX/bin
 bine boot
-dxvk_in
+dxvk_in.sh
 launcher
 
