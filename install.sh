@@ -84,7 +84,7 @@ osmesa pulseaudio termux-x11-nightly vulkan-tools xtrans libxxf86vm
 xorg-xrandr xorg-font-util xorg-util-macros libxfont2 libxkbfile
 libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms
 xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama
-libxshmfence
+libxshmfence neofetch
 pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
