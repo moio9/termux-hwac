@@ -111,7 +111,7 @@ proot-distro login $name --shared-tmp -- $proot_arg
 fi
 
 termux-libs
-mv bine.sh $PREFIX/glibc/bin/bine
+cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bin/bine $PREFIX/bin
 bine boot
 dxvk_in
