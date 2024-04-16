@@ -90,7 +90,8 @@ pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
 pkg install -y box64-glibc mesa-vulkan-icd-freedren-glibc mangohud-glibc
-setup_termux-storage
+termux-setup-storage
+setup_termux
 
 if [ $desktop_termux = true ] ; then
   pkg install $env
