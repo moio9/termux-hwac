@@ -101,16 +101,16 @@ if [ $desktop_termux = true ] ; then
   pkg install glmark2
 fi
 
-if [ $create_alias = true ] ; then
-  proot-distro install --override-alias $name $distro
-else
-  name="$distro"
-  proot-distro install $distro
-fi
 
 if [ distro = true ] ; then
-  cd $HOME/proot-hwac
-proot-distro login $name --shared-tmp -- $proot_arg
+    if [ $create_alias = true ] ; then
+      proot-distro install --override-alias $name $distro
+    else
+      name="$distro"
+      proot-distro install $distro
+    fi
+    cd $HOME/proot-hwac
+    proot-distro login $name --shared-tmp -- $proot_arg
 fi
 
 termux-libs
