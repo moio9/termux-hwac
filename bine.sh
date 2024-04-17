@@ -19,7 +19,7 @@ LD_PRELOAD_SAVED=$LD_PRELOAD
 unset LD_PRELOAD
 
 
-$GLIBC_BIN/box64 $WINE_PATH/bin/wine "$@"
+$GLIBC_BIN/box64 $WINE_PATH/bin/wine64 "$@"
 
 
 export LD_PRELOAD=$LD_PRELOAD_SAVED
