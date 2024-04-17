@@ -24,6 +24,17 @@ function launcher {
     Path=
     Terminal=false
     StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Wine Explorer.desktop'
+
+    echo "[Desktop Entry]
+    Version=1.0
+    Type=Application
+    Name=Wine Config
+    Comment=Wine Config Manager
+    Exec=bine winecfg
+    Icon=gtk-page-setup
+    Path=
+    Terminal=false
+    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Wine Config.desktop'
 }
 
 function termux-libs {
@@ -76,23 +87,24 @@ while getopts o:a:t: opts; do
 done
 
 termux-setup-storage
-pkg update
-pkg upgrade
+pkg update 
+pkg upgrade -y
 pkg install -y tur-repo x11-repo
 pkg install -y pulseaudio termux-x11-nightly proot-distro wget
 pkg install -y freetype git gnutls libandroid-shmem-static 
-libx11 xorgproto libdrm libpixman libxfixes libjpeg-turbo mesa-demos 
-osmesa pulseaudio termux-x11-nightly vulkan-tools xtrans libxxf86vm
-xorg-xrandr xorg-font-util xorg-util-macros libxfont2 libxkbfile
-libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms
-xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama
-libxshmfence neofetch mousepad
+    libx11 xorgproto libdrm libpixman libxfixes libjpeg-turbo mesa-demos 
+    osmesa pulseaudio termux-x11-nightly vulkan-tools xtrans libxxf86vm
+    xorg-xrandr xorg-font-util xorg-util-macros libxfont2 libxkbfile
+    libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms
+    xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama
+    libxshmfence neofetch mousepad
 pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
 pkg install -y mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
-mesa-zink-glibc libx*
+    mesa-zink-glibc libx*
+pkg install -y libx*
 termux-setup-storage
 setup_termux
 
@@ -117,7 +129,8 @@ fi
 termux-libs
 chmod +x bine.sh
 chmod +x dxvk_in.sh
-chmod +X "/Desktop/Wine Explorer.desktop"
+chmod +x wine_in.sh
+chmod +x "/Desktop/Wine Explorer.desktop"
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
