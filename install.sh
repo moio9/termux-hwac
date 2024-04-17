@@ -46,6 +46,7 @@ function termux-libs {
   chmod +x box/box86
   cp -r turnip/glibc $PREFIX
   cp -r box/glibc $PREFIX
+  cd ..
 }
 
 function setup_termux {
