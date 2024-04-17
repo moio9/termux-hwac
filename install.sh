@@ -89,7 +89,8 @@ pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
-pkg install -y box64-glibc mesa-vulkan-icd-freedreno-glibc mangohud-glibc mesa-zink-glibc
+pkg install -y box64-glibc mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
+mesa-zink-glibc libx*
 termux-setup-storage
 setup_termux
 
@@ -114,9 +115,10 @@ fi
 termux-libs
 chmod +x bine.sh
 chmod +x dxvk_in.sh
+chmod +X "/Desktop/Wine Explorer.desktop"
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
-dxvk_in.sh
+./dxvk_in.sh
 launcher
 
