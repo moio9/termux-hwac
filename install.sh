@@ -5,7 +5,7 @@ env=xfce4
 rep=apt
 name="$distro-hwac"
 
-proot
+proot=false
 proot_official=false
 create_alias=true
 desktop_termux=true
@@ -13,8 +13,7 @@ desktop_termux=true
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 
 function launcher {
-    cat << EOF > '/data/data/com.termux/files/home/Desktop/Wine Explorer.desktop'
-    [Desktop Entry]
+    echo "[Desktop Entry]
     Version=1.0
     Type=Application
     Name=Wine Explorer
@@ -23,15 +22,17 @@ function launcher {
     Icon=xfwm4-default
     Path=
     Terminal=false
-    StartupNotify=false
-EOF
+    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Wine Explorer.desktop'
 }
 
 function termux-libs {
   wget https://github.com/moio9/proot-hwac/releases/download/lib/termux-deps.tar
   tar -xvf termux-deps.tar
   mv wine $PREFIX/glibc/wine
+  chmod +x box/box64
+  chmod +x box/box86
   cp -r turnip/glibc $PREFIX
+  cp -r box/glibc $PREFIX
 }
 
 function setup_termux {
