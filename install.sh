@@ -40,6 +40,7 @@ function launcher {
 function termux-libs {
   wget https://github.com/moio9/proot-hwac/releases/download/lib/termux-deps.tar.xz
   tar -xvf termux-deps.tar.xz
+  cd termux-deps
   mv wine $PREFIX/glibc/wine
   chmod +x box/box64
   chmod +x box/box86
