@@ -13,6 +13,7 @@ desktop_termux=true
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 
 function launcher {
+    mkdir '/data/data/com.termux/files/home/Desktop/'
     echo "[Desktop Entry]
     Version=1.0
     Type=Application
@@ -26,7 +27,7 @@ function launcher {
 }
 
 function termux-libs {
-  wget https://github.com/moio9/proot-hwac/releases/download/lib/termux-deps.tar
+  wget https://github.com/moio9/proot-hwac/releases/download/lib/termux-deps.tar.xz
   tar -xvf termux-deps.tar
   mv wine $PREFIX/glibc/wine
   chmod +x box/box64
