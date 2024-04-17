@@ -91,7 +91,7 @@ pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
-pkg install -y box64-glibc mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
+pkg install -y mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
 mesa-zink-glibc libx*
 termux-setup-storage
 setup_termux
