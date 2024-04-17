@@ -105,7 +105,7 @@ pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
 pkg install -y mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
-    mesa-zink-glibc libx*
+    mesa-zink-glibc libx* box64-glibc
 pkg install -y libx*
 termux-setup-storage
 setup_termux
