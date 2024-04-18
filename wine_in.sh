@@ -8,11 +8,11 @@ if [ -d 'wine-$version$mod$type-amd64.tar.xz' ]; then
 	cd dxvk-gplasync-v$version
 else
 	cd $PREFIX/glibc
-  mv --backup=t wine wine-old
-	wget https://github.com/Kron4ek/Wine-Builds/releases/download/9.6/wine-$version$mod$type-amd64.tar.xz
+	mv --backup=t wine wine-old
+	wget https://github.com/moio9/proot-hwac/releases/download/9.6/wine-$version$mod$type-amd64.tar.xz
 	tar -xvf wine-$version$mod$type-amd64.tar.xz
 fi
-
+chmod +x -R wine-$version$mod$type-amd64
 mv wine-$version$mod$type-amd64 wine
  
 cd ..
