@@ -16,6 +16,8 @@ if [ -v $WINEPREFIX ]; then
 	export WINEPREFIX=$PREFIX/glibc/.wine
 fi
 
+bine boot
+
 cp x64/*.dll $WINEPREFIX/drive_c/windows/system32
 cp x32/*.dll $WINEPREFIX/drive_c/windows/syswow64
  
