@@ -40,10 +40,9 @@ function launcher {
 function termux-libs {
   wget https://github.com/moio9/proot-hwac/releases/download/lib/termux-deps.tar.xz
   tar -xvf termux-deps.tar.xz
+  chmod +x -R termux-deps
   cd termux-deps
   mv wine $PREFIX/glibc/wine
-  chmod +x box/box64
-  chmod +x box/box86
   cp -r turnip/glibc $PREFIX
   cp -r box/glibc $PREFIX
   cd ..
@@ -107,7 +106,10 @@ pkg install -y glibc-runner
 pkg install -y mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
     mesa-zink-glibc box64-glibc
 pkg install -y libxcb-glibc libxcomposite-glibc libxcursor-glibc
-    libxfixes-glibc libxrender-glibc
+    libxfixes-glibc libxrender-glibc libgcrypt-glibc libgpg-error-glibc
+    libice-glibc libsm-glibc libxau-glibc libxcb-glibc libxcrypt-glibc
+    libxdmcp-glibc libxext-glibc libxfixes-glibc libxinerama-glibc
+    libxkbfile-glibc libxml2-glibc libxmu-glibc libxpm-glib
 termux-setup-storage
 setup_termux
 
