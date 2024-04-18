@@ -110,6 +110,9 @@ pkg install -y libxcb-glibc libxcomposite-glibc libxcursor-glibc
     libice-glibc libsm-glibc libxau-glibc libxcb-glibc libxcrypt-glibc
     libxdmcp-glibc libxext-glibc libxfixes-glibc libxinerama-glibc
     libxkbfile-glibc libxml2-glibc libxmu-glibc libxpm-glib
+    fontconfig-glibc libx11-glibc-static libxcb-glibc-static
+    libxcrypt-glibc-static libxcursor-glibc-static libxi-glibc
+    libxinerama-glibc-static libxcomposite-glibc-static
 termux-setup-storage
 setup_termux
 
