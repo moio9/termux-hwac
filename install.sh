@@ -113,6 +113,12 @@ pkg install -y libxcb-glibc libxcomposite-glibc libxcursor-glibc
     fontconfig-glibc libx11-glibc-static libxcb-glibc-static
     libxcrypt-glibc-static libxcursor-glibc-static libxi-glibc
     libxinerama-glibc-static libxcomposite-glibc-static
+    fontconfig-glibc libpng-glibc libx11-glibc-static libxcb-glibc-static 
+    libxcomposite-glibc-static libxcrypt-glibc-static libxcursor-glibc-static
+    libxi-glibc libxinerama-glibc-static libxkbfile-glibc-static 
+    libxml2-glibc-static libxmu-glibc-static libxpm-glibc-static
+    libxrandr-glibc-static libxrender-glibc-static libxshmfence-glibc-static
+    libxxf86vm-glibc-static libxxf86vm-glibc
 pkg install -y pulseaudio-glibc
 termux-setup-storage
 setup_termux
