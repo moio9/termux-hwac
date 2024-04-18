@@ -143,4 +143,5 @@ ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
 ./dxvk_in.sh
 launcher
+pkg upgrade
 
