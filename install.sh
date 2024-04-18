@@ -92,34 +92,26 @@ pkg update
 pkg upgrade -y
 pkg install -y tur-repo x11-repo
 pkg install -y pulseaudio termux-x11-nightly proot-distro wget
-pkg install -y freetype git gnutls libandroid-shmem-static 
-    libx11 xorgproto libdrm libpixman libxfixes libjpeg-turbo mesa-demos 
-    osmesa pulseaudio termux-x11-nightly vulkan-tools xtrans libxxf86vm
-    xorg-xrandr xorg-font-util xorg-util-macros libxfont2 libxkbfile
-    libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms
-    xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama
-    libxshmfence neofetch mousepad
+pkg install -y \
+    freetype git gnutls libandroid-shmem-static \
+    libx11 xorgproto libdrm libpixman libxfixes libjpeg-turbo \
+    mesa-demos osmesa pulseaudio termux-x11-nightly vulkan-tools xtrans \
+    libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
+    libxkbfile libpciaccess xcb-util-renderutil xcb-util-image \
+    xcb-util-keysyms xcb-util-wm xorg-xkbcomp xkeyboard-config \
+    libxdamage libxinerama libxshmfence neofetch mousepad
 pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
 pkg install -y mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
     mesa-zink-glibc box64-glibc
-pkg install -y libxcb-glibc libxcomposite-glibc libxcursor-glibc
-    libxfixes-glibc libxrender-glibc libgcrypt-glibc libgpg-error-glibc
-    libice-glibc libsm-glibc libxau-glibc libxcb-glibc libxcrypt-glibc
-    libxdmcp-glibc libxext-glibc libxfixes-glibc libxinerama-glibc
-    libxkbfile-glibc libxml2-glibc libxmu-glibc libxpm-glib
-    fontconfig-glibc libx11-glibc-static libxcb-glibc-static
-    libxcrypt-glibc-static libxcursor-glibc-static libxi-glibc
-    libxinerama-glibc-static libxcomposite-glibc-static
-    fontconfig-glibc libpng-glibc libx11-glibc-static libxcb-glibc-static 
-    libxcomposite-glibc-static libxcrypt-glibc-static libxcursor-glibc-static
-    libxi-glibc libxinerama-glibc-static libxkbfile-glibc-static 
-    libxml2-glibc-static libxmu-glibc-static libxpm-glibc-static
-    libxrandr-glibc-static libxrender-glibc-static libxshmfence-glibc-static
-    libxxf86vm-glibc-static libxxf86vm-glibc
-pkg install -y pulseaudio-glibc
+pkg install -y \
+    libxcb-glibc libxcomposite-glibc libxcursor-glibc libxfixes-glibc \
+    libxrender-glibc libgcrypt-glibc libgpg-error-glibc libice-glibc \
+    libsm-glibc libxau-glibc libxcrypt-glibc libxdmcp-glibc \
+    libxext-glibc libxinerama-glibc libxkbfile-glibc libxml2-glibc
+pkg install -y pulseaudio-glibc libx*-*glibc*
 termux-setup-storage
 setup_termux
 
