@@ -23,3 +23,5 @@ cp x32/*.dll $WINEPREFIX/drive_c/windows/syswow64
  
 cd ..
 gio trash dxvk-gplasync-v$version.tar.gz
+
+./support.sh
