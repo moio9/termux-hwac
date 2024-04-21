@@ -38,7 +38,7 @@ function launcher {
 }
 
 function termux-libs {
-  wget https://github.com/moio9/proot-hwac/releases/download/lib/termux-deps.tar.xz
+  wget https://github.com/moio9/termux-glibc-hwac/releases/download/lib/termux-deps.tar.xz
   tar -xvf termux-deps.tar.xz
   chmod +x -R termux-deps
   cd termux-deps
