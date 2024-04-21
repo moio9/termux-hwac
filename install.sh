@@ -112,6 +112,8 @@ pkg install -y \
     libsm-glibc libxau-glibc libxcrypt-glibc libxdmcp-glibc \
     libxext-glibc libxinerama-glibc libxkbfile-glibc libxml2-glibc
 pkg install -y pulseaudio-glibc libx*-*glibc*
+pkg install -y libgmp-glibc
+pkg install -y fex
 termux-setup-storage
 setup_termux
 
@@ -145,3 +147,5 @@ bine boot
 launcher
 pkg upgrade
 
+
+./support.sh
