@@ -146,6 +146,7 @@ bine boot
 ./dxvk_in.sh
 launcher
 pkg upgrade
-
+sleep 1
+echo "Type 'termux11' to enter xfce session."
 
 ./support.sh
