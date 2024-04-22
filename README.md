@@ -8,6 +8,8 @@ cd termux-glibc-hwac
 ```
 Type 'termux11' to enter xfce session.
 
+Type 'bine' to use wine with box.
+
 ## **Please help to keep this project alive:**
 
 **Monero:** 46Mk8t9uLY7jnBXnyHMyVARvwk1Y7jcGEQwKLN8GtGGBioncjKLgkEa33jEN2ibgkQjoFZWVwXXwsM3vzAFz4RzV7psLow6
