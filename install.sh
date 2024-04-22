@@ -147,6 +147,7 @@ bine boot
 launcher
 pkg upgrade
 sleep 1
-echo "Type 'termux11' to enter xfce session."
 
 ./support.sh
+
+echo "Type 'termux11' to enter xfce session."
