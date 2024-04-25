@@ -2,7 +2,7 @@
 #_INSTALL_
 ```sh
 git clone https://github.com/moio9/termux-glibc-hwac.git
-chmod +x termux-glibc-hwac
+chmod +x -R termux-glibc-hwac
 cd termux-glibc-hwac
 ./install.sh
 ```
