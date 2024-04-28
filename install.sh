@@ -146,6 +146,11 @@ bine boot
 ./dxvk_in.sh
 launcher
 pkg upgrade
+
+echo "export GLIBC=$PREFIC/glibc" >> ~/.bashrc
+echo "export GLBIN=$PREFIC/glibc/bin" >> ~/.bashrc
+echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
+source ~/.bashrc
 sleep 1
 
 ./support.sh
