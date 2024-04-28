@@ -1,8 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 version="9.6"
-mod="-staging"
-type="-tkg"
+mod="" #-staging
+type="" #-tgk
 
 if [ -d 'wine-$version$mod$type-amd64.tar.xz' ]; then
 	cd dxvk-gplasync-v$version
