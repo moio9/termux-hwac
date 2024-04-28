@@ -3,6 +3,7 @@
 export WINE_PATH=$PREFIX/glibc/wine
 if [ -z "$WINEPREFIX" ]; then
     export WINEPREFIX=$PREFIX/glibc/.wine
+fi
 
 export WINEESYNC=1
 export WINEESYNC_TERMUX=1
