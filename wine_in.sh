@@ -15,7 +15,8 @@ fi
 chmod +x -R wine-$version$mod$type-amd64
 mv wine-$version$mod$type-amd64 wine
  
-cd $HOME/termux-glibc-hwac
+cd $PREFIX/glibc
 gio trash wine-$version$mod$type-amd64.tar.xz
 
-./support.sh
+
+. $HOME/termux-glibc-hwac/support.sh
