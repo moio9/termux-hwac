@@ -9,6 +9,7 @@ proot=false
 proot_official=false
 create_alias=true
 desktop_termux=true
+termux_hangover=true
 
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 
@@ -35,6 +36,30 @@ function launcher {
     Path=
     Terminal=false
     StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Wine Config.desktop'
+
+    echo "[Desktop Entry]
+    Version=1.0
+    Type=Application
+    Name=Hang Explorer
+    Comment=Wine Explorer Manager Hangover
+    Exec=hangover explorer
+    Icon=gtk-caps-lock-warning
+    Path=
+    Terminal=false
+    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Hang Explorer.desktop'
+
+    echo "[Desktop Entry]
+    Version=1.0
+    Type=Application
+    Name=Hang Config
+    Comment=Wine Config Manager Hangover
+    Exec=hangover winecfg
+    Icon=org.xfce.xfwm4-tweaks
+    Path=
+    Terminal=false
+    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Hang Config.desktop'
+
+    echo "pkill -f wine "> '/data/data/com.termux/files/home/Desktop/Wine Killer.sh'
 }
 
 function termux-libs {
@@ -66,9 +91,13 @@ if [ "\$1" != "k" ]
   then
 
     am start -n com.termux.x11/com.termux.x11.MainActivity
-    sleep 5 && pulseaudio &
+    pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
+    export PULSE_SERVER=127.0.0.1
 
     env DISPLAY=:0
+    export GALLIUM_DRIVER=virpipe
+    export MESA_GL_VERSION_OVERRIDE=4.0
+    MESA_NO_ERROR=1 MESA_GL_VERSION_OVERRIDE=4.3COMPAT MESA_GLES_VERSION_OVERRIDE=3.2 GALLIUM_DRIVER=zink ZINK_DESCRIPTORS=lazy virgl_test_server --use-egl-surfaceless --use-gles &
     termux-x11 :0 -xstartup "dbus-launch --exit-with-session '$env-session'"
      
 fi
@@ -114,6 +143,12 @@ pkg install -y \
 pkg install -y pulseaudio-glibc libx*-*glibc*
 pkg install -y libgmp-glibc
 pkg install -y fex
+pkg install -y mesa-zink-dev virgl_test_server* freetype gnutls \
+    libandroid-shmem-static libx11 xorgproto libdrm libpixman libxfixes \
+    libjpeg-turbo mesa-demos osmesa pulseaudio termux-x11-nightly vulkan-tools \
+    xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
+    libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms \
+    xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
 termux-setup-storage
 setup_termux
 
@@ -123,6 +158,13 @@ if [ $desktop_termux = true ] ; then
   pkg install glmark2
 fi
 
+if [ $termux_hangover = true ] ; then
+  cp hangover $PREFIX/bin
+  cd $HOME
+  wget https://github.com/alexvorxx/hangover-termux/releases/download/9.3/wine_hangover_9.3_bionic_build_box64upd.tar.xz
+  tar -xvf wine_hangover_9.3_bionic_build_box64upd.tar.xz
+  gio trash wine_hangover_9.3_bionic_build_box64upd.tar.xz
+fi
 
 if [ distro = true ] ; then
     if [ $create_alias = true ] ; then
@@ -150,6 +192,7 @@ pkg upgrade
 echo "export GLIBC=$PREFIC/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIC/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
+echo "alias kys='killall -u u0_a468'" >> ~/.bashrc
 source ~/.bashrc
 sleep 1
 
