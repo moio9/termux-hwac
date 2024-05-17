@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+if [ -z "$WINEPREFIX" ]; then
+    export WINEPREFIX=$HOME/.wine
+fi
+
+export WINEESYNC=1
+
+export WINEDLLOVERRIDES="${WINEDLLOVERRIDES},d3d11,d3d10,dxgi,d3d9=n,b"
+
+export DXVK_ASYNC=1
+export MESA_VK_WSI_PRESENT_MODE=mailbox
+
+export BOX64_MMAP32=1
+
+export LD_LIBRARY_PATH=$PREFIX/lib
+$HOME/wine_hangover/arm64-v8a/bin/wine "$@"
+
