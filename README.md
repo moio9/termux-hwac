@@ -19,3 +19,12 @@ Type 'bine' to use wine with box.
 **Ethereum:** 0xa024a505Ec24c7eA163985eC89D56e614B9AdAae
 
 **Paypall:** https://paypal.me/moioyoyo
+
+#Contact
+Odysee: https://odysee.com/@moio.yoyo:3
+
+Steam: https://steamcommunity.com/profiles/76561198169326632
+
+Discord: Puya#0957
+
+itch: https://moio9.itch.io/
