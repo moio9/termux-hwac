@@ -20,7 +20,7 @@ Type 'bine' to use wine with box.
 
 **Paypall:** https://paypal.me/moioyoyo
 
-#Contact
+#_Contact_
 Odysee: https://odysee.com/@moio.yoyo:3
 
 Steam: https://steamcommunity.com/profiles/76561198169326632
