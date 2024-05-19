@@ -178,6 +178,8 @@ if [ distro = true ] ; then
     proot-distro login $name --shared-tmp -- $proot_arg
 fi
 
+cd $HOME/termux-glibc-hwac
+
 termux-libs
 chmod +x bine.sh
 chmod +x dxvk_in.sh
