@@ -143,8 +143,7 @@ pkg install -y \
 pkg install -y pulseaudio-glibc libx*-*glibc*
 pkg install -y libgmp-glibc
 pkg install -y fex
-pkg install -y mesa-zink-dev virglrenderer-mesa-zink \
-    virgl_test_server* freetype gnutls \
+pkg install -y mesa-zink-dev virglrenderer-mesa-zink* virgl_test_server* freetype gnutls \
     libandroid-shmem-static libx11 xorgproto libdrm libpixman libxfixes \
     libjpeg-turbo mesa-demos osmesa pulseaudio termux-x11-nightly vulkan-tools \
     xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
