@@ -149,6 +149,7 @@ pkg install -y mesa-zink-dev virglrenderer-mesa-zink* virgl_test_server* freetyp
     xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
     libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms \
     xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
+pkg install -y virglrenderer-mesa-zink
 termux-setup-storage
 setup_termux
 
