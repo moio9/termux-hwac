@@ -67,9 +67,7 @@ function termux-libs {
   tar -xvf termux-deps.tar.xz
   chmod +x -R termux-deps
   cd termux-deps
-  mv wine $PREFIX/glibc/wine
-  cp -r turnip/glibc $PREFIX
-  cp -r box/glibc $PREFIX
+  cp -r glibc $PREFIX
   cd ..
 }
 
@@ -199,6 +197,7 @@ bine boot
 launcher
 pkg upgrade
 
+echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
