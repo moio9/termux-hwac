@@ -147,7 +147,7 @@ pkg install -y mesa-zink-dev virglrenderer-mesa-zink* virgl_test_server* freetyp
     xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
     libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms \
     xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
-pkg install -y virglrenderer-mesa-zink
+pkg install -y virglrenderer-mesa-zink box64-glibc
 termux-setup-storage
 setup_termux
 
@@ -158,7 +158,8 @@ if [ $desktop_termux = true ] ; then
 fi
 
 if [ $termux_hangover = true ] ; then
-  printf "Install bionic hangover (y/n)? (experimental)!"
+  printf "Install bionic hangover (y/n)? (experimental)! :"
+  echo
   read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then 
       echo Yes
