@@ -158,7 +158,7 @@ if [ $desktop_termux = true ] ; then
 fi
 
 if [ $termux_hangover = true ] ; then
-  echo Install bionic hangover (y/n)? (experimental!)
+  printf "Install bionic hangover (y/n)? (experimental)!"
   read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then 
       echo Yes
