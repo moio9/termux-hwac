@@ -165,7 +165,9 @@ if [ $termux_hangover = true ] ; then
       cp hangover $PREFIX/bin
       cd $HOME
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/turnip-termux-08.05.24_build.zip
       tar -xvf hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      unzip turnip-termux-08.05.24_build.zip $PREFIX
       gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
   else
       echo No
