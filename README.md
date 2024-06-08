@@ -12,6 +12,10 @@ Type 'bine' to use wine with box.
 
 Type 'hangover' to use hangover with box.
 
+Type 'gava' to use openjdk21 with glibc.
+
+Here is [video](https://www.youtube.com/watch?v=TFaQBqQtz2M) tutorial.
+
 ## **Please help to keep this project alive:**
 
 **Monero:** 46Mk8t9uLY7jnBXnyHMyVARvwk1Y7jcGEQwKLN8GtGGBioncjKLgkEa33jEN2ibgkQjoFZWVwXXwsM3vzAFz4RzV7psLow6
