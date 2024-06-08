@@ -1,6 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 version=2.3.1-1
+sp=pwd
 
 if [ -d 'dxvk-gplasync-v$version' ]; then
 	cd dxvk-gplasync-v$version
@@ -24,4 +25,5 @@ cp x32/*.dll $WINEPREFIX/drive_c/windows/syswow64
 cd ..
 gio trash dxvk-gplasync-v$version.tar.gz
 
+cd $sp
 ./support.sh
