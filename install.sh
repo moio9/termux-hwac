@@ -160,11 +160,18 @@ if [ $desktop_termux = true ] ; then
 fi
 
 if [ $termux_hangover = true ] ; then
-  cp hangover $PREFIX/bin
-  cd $HOME
-  wget https://github.com/alexvorxx/hangover-termux/releases/download/9.3/wine_hangover_9.3_bionic_build_box64upd.tar.xz
-  tar -xvf wine_hangover_9.3_bionic_build_box64upd.tar.xz
-  gio trash wine_hangover_9.3_bionic_build_box64upd.tar.xz
+  echo Install bionic hangover (y/n)? (experimental!)
+  read answer
+  if [ "$answer" != "${answer#[Yy]}" ] ;then 
+      echo Yes
+      cp hangover $PREFIX/bin
+      cd $HOME
+      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      tar -xvf hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+  else
+      echo No
+  fi
 fi
 
 if [ distro = true ] ; then
@@ -192,10 +199,10 @@ bine boot
 launcher
 pkg upgrade
 
-echo "export GLIBC=$PREFIC/glibc" >> ~/.bashrc
-echo "export GLBIN=$PREFIC/glibc/bin" >> ~/.bashrc
+echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
+echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
-echo "alias kys='killall -u u0_a468'" >> ~/.bashrc
+echo "alias kys='killall -u $USER'" >> ~/.bashrc
 source ~/.bashrc
 sleep 1
 
