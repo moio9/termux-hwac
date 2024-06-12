@@ -167,9 +167,13 @@ if [ $termux_hangover = true ] ; then
       cd $HOME
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/turnip-termux-08.05.24_build.zip
+      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/box64cpu_hangover9.5.zip
       tar -xvf hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
-      unzip turnip-termux-08.05.24_build.zip $PREFIX
+      unzip -o turnip-termux-08.05.24_build.zip -d $PREFIX/..
+      unzip -o box64cpu_hangover9.5.zip -d wine_hangover/arm64-v8a/lib/wine/aarch64-windows
       gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      gio trash turnip-termux-08.05.24_build.zip
+      gio trash box64cpu_hangover9.5.zip
   else
       echo No
   fi
@@ -200,7 +204,7 @@ bine boot
 launcher
 pkg upgrade
 
-echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava
+echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
