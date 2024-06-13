@@ -6,6 +6,12 @@ type="" #-tgk
 
 dir=$(pwd)
 
+if ! [[ -z "$@" ]]; then
+  mod="" 
+  type=""
+  version=$@
+fi
+
 if [ -d 'wine-$version$mod$type-amd64.tar.xz' ]; then
 	cd dxvk-gplasync-v$version
 else
