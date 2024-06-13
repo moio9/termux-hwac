@@ -4,6 +4,8 @@ version="9.6"
 mod="" #-staging
 type="" #-tgk
 
+dir=$(pwd)
+
 if [ -d 'wine-$version$mod$type-amd64.tar.xz' ]; then
 	cd dxvk-gplasync-v$version
 else
@@ -19,4 +21,4 @@ cd $PREFIX/glibc
 gio trash wine-$version$mod$type-amd64.tar.xz
 
 
-. $HOME/termux-glibc-hwac/support.sh
+. $dir/support.sh
