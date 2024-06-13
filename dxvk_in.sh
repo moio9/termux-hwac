@@ -18,6 +18,7 @@ if [ -v $WINEPREFIX ]; then
 fi
 
 bine boot
+hangover boot
 
 cp x64/*.dll $WINEPREFIX/drive_c/windows/system32
 cp x32/*.dll $WINEPREFIX/drive_c/windows/syswow64
