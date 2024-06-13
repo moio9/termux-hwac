@@ -1,4 +1,4 @@
-# TERMUX-GLIBC-HWAC (TGH)
+# TERMUX-HWAC
 #_INSTALL_
 ```sh
 git clone https://github.com/moio9/termux-glibc-hwac.git
