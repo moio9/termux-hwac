@@ -175,6 +175,10 @@ if [ $termux_hangover = true ] ; then
       gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
       gio trash turnip-termux-08.05.24_build.zip
       gio trash box64cpu_hangover9.5.zip
+
+      cd $dir
+      hangover boot
+      WINEPREFIX=$HOME/.wine ./dxvk_in.sh
   else
       echo No
   fi
