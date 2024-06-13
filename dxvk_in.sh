@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 version=2.3.1-1
-sp=pwd
+sp=$(pwd)
 
 if [ -d 'dxvk-gplasync-v$version' ]; then
 	cd dxvk-gplasync-v$version
