@@ -1,9 +1,9 @@
 # TERMUX-HWAC
 #_INSTALL_
 ```sh
-git clone https://github.com/moio9/termux-glibc-hwac.git
-chmod +x -R termux-glibc-hwac
-cd termux-glibc-hwac
+git clone https://github.com/moio9/termux-hwac.git
+chmod +x -R termux-hwac
+cd termux-hwac
 ./install.sh
 ```
 Type 'termux11' to enter xfce session.
