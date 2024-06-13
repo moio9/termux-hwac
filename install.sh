@@ -12,6 +12,7 @@ desktop_termux=true
 termux_hangover=true
 
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
+dir=$(pwd)
 
 function launcher {
     mkdir '/data/data/com.termux/files/home/Desktop/'
@@ -63,7 +64,7 @@ function launcher {
 }
 
 function termux-libs {
-  wget https://github.com/moio9/termux-glibc-hwac/releases/download/lib/termux-deps.tar.xz
+  wget https://github.com/moio9/termux-hwac/releases/download/lib/termux-deps.tar.xz
   tar -xvf termux-deps.tar.xz
   chmod +x -R termux-deps
   cd termux-deps
@@ -190,7 +191,7 @@ if [ distro = true ] ; then
     proot-distro login $name --shared-tmp -- $proot_arg
 fi
 
-cd $HOME/termux-glibc-hwac
+cd $dir
 
 termux-libs
 chmod +x bine.sh
