@@ -186,7 +186,7 @@ if [ $termux_hangover = true ] ; then
   else
       echo No
   fi
-  tput setaf 0;
+  tput setaf 255;
 fi
 
 if [ distro = true ] ; then
@@ -223,5 +223,5 @@ source ~/.bashrc
 sleep 1
 
 tput setaf 13; ./support.sh tput setaf 0;
-tput setaf 0;
+tput setaf 7;
 echo "Type '$(tput setaf 14)termux11' to enter xfce session."
