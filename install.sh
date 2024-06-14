@@ -164,8 +164,10 @@ if [ $termux_hangover = true ] ; then
   printf "$(tput setaf 2)Install bionic hangover (y/n)? $(tput setaf 1)(experimental)! :"
   echo
   read answer
+  tput setab 0
   if [ "$answer" != "${answer#[Yy]}" ] ;then 
       echo Yes
+      tput setaf 3;
       cp hangover $PREFIX/bin
       cd $HOME
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
@@ -184,6 +186,7 @@ if [ $termux_hangover = true ] ; then
   else
       echo No
   fi
+  tput setaf 0;
 fi
 
 if [ distro = true ] ; then
