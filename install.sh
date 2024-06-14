@@ -159,7 +159,9 @@ if [ $desktop_termux = true ] ; then
 fi
 
 if [ $termux_hangover = true ] ; then
-  printf "Install bionic hangover (y/n)? (experimental)! :"
+  tput setab 8
+  echo
+  printf "$(tput setaf 2)Install bionic hangover (y/n)? $(tput setaf 1)(experimental)! :"
   echo
   read answer
   if [ "$answer" != "${answer#[Yy]}" ] ;then 
@@ -213,10 +215,10 @@ echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && ch
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
-echo "alias kys='killall -u $USER'" >> ~/.bashrc
+echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 source ~/.bashrc
 sleep 1
 
-./support.sh
+tput setaf 13; ./support.sh
 
 echo "Type 'termux11' to enter xfce session."
