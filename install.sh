@@ -222,6 +222,6 @@ echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 source ~/.bashrc
 sleep 1
 
-tput setaf 13; ./support.sh
-
-echo "Type 'termux11' to enter xfce session."
+tput setaf 13; ./support.sh tput setaf 0;
+tput setaf 0;
+echo "Type '$(tput setaf 14)termux11' to enter xfce session."
