@@ -214,7 +214,7 @@ bine boot
 launcher
 pkg upgrade
 
-echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
+echo 'glibc-runner $PREFIX/glibc/share/jdk/bin/java "$@"' > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
