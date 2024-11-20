@@ -14,6 +14,8 @@ Type 'hangover' to use hangover with box.
 
 Type 'gava' to use openjdk21 with glibc.
 
+Type 'wine' to use latest hangover version with box64 or fex for 64bit.
+
 Here is [video](https://www.youtube.com/watch?v=TFaQBqQtz2M) tutorial.
 
 ## **Please help to keep this project alive:**
