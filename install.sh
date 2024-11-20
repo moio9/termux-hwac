@@ -118,7 +118,7 @@ while getopts "o:a:t:u:" opts; do
   esac
 done
 
-if [ update ] 
+if [ "$update" = true ];
   then
     cd $dir
     ./update.sh
