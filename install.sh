@@ -10,6 +10,7 @@ proot_official=false
 create_alias=true
 desktop_termux=true
 termux_hangover=true
+update=false
 
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 dir=$(pwd)
@@ -107,13 +108,22 @@ EOF
 }
   
 
-while getopts o:a:t: opts; do
-  case $opts} in
+while getopts "o:a:t:u:" opts; do
+  case $opts in
     o) proot_official=true ;;
     a) create_alias=false ;;
     t) desktop_termux=true ;;
+    u) update=true ;;
+    *) echo "Invalid Option: -$OPTARG" ;;
   esac
 done
+
+if [ update ] 
+  then
+    cd $dir
+    ./update.sh
+    exit 1 
+  fi
 
 termux-setup-storage
 pkg update 
@@ -168,6 +178,9 @@ if [ $termux_hangover = true ] ; then
   if [ "$answer" != "${answer#[Yy]}" ] ;then 
       echo Yes
       tput setaf 3;
+      
+      pkg in hangover*
+
       cp hangover $PREFIX/bin
       cd $HOME
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
@@ -214,7 +227,7 @@ bine boot
 launcher
 pkg upgrade
 
-echo 'glibc-runner $PREFIX/glibc/share/jdk/bin/java "$@"' > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
+echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
@@ -224,4 +237,4 @@ sleep 1
 
 tput setaf 13; ./support.sh tput setaf 0;
 tput setaf 7;
-echo "Type '$(tput setaf 14)termux11$(tput setaf 255)' to enter xfce session."
+echo "Type '$(tput setaf 14)termux11' to enter xfce session."
