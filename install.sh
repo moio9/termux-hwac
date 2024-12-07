@@ -183,10 +183,10 @@ if [ $termux_hangover = true ] ; then
 
       cp hangover $PREFIX/bin
       cd $HOME
-      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.22/wine_hangover_9.22_bionic_build_patched.tar.xz
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/turnip-termux-08.05.24_build.zip
       wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/box64cpu_hangover9.5.zip
-      tar -xvf hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+      tar -xvf wine_hangover_9.22_bionic_build_patched.tar.xz
       unzip -o turnip-termux-08.05.24_build.zip -d $PREFIX/..
       unzip -o box64cpu_hangover9.5.zip -d wine_hangover/arm64-v8a/lib/wine/aarch64-windows
       gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
