@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-version=2.4.1-1
+version=2.5.1-2
 sp=$(pwd)
 
 if [ "$1" == "--default" ]; then
