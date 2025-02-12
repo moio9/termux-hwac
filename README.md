@@ -18,6 +18,8 @@ Type 'hangover-wine' to use latest tur hangover version with box64 or with fex f
 
 Type 'winetricks' to configure wineprefix.
 
+Type 'winepad' to start controller connection with wine.
+
 Here is [video](https://www.youtube.com/watch?v=TFaQBqQtz2M) tutorial.
 
 ## **Please help to keep this project alive:**
