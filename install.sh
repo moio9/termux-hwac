@@ -11,6 +11,7 @@ create_alias=true
 desktop_termux=true
 termux_hangover=true
 update=false
+winepad_in=true
 
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 dir=$(pwd)
@@ -44,7 +45,7 @@ function launcher {
     Type=Application
     Name=Hang Explorer
     Comment=Wine Explorer Manager Hangover
-    Exec=hangover explorer
+    Exec=hangover-hangover explorer
     Icon=gtk-caps-lock-warning
     Path=
     Terminal=false
@@ -55,13 +56,14 @@ function launcher {
     Type=Application
     Name=Hang Config
     Comment=Wine Config Manager Hangover
-    Exec=hangover winecfg
+    Exec=hangover-wine winecfg
     Icon=org.xfce.xfwm4-tweaks
     Path=
     Terminal=false
     StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Hang Config.desktop'
 
-    echo "pkill -f wine "> '/data/data/com.termux/files/home/Desktop/Wine Killer.sh'
+    echo "pkill -9 -f wine
+    pkill -9 -f .exe "> '/data/data/com.termux/files/home/Desktop/Wine Killer.sh'
 }
 
 function termux-libs {
@@ -71,6 +73,22 @@ function termux-libs {
   cd termux-deps
   cp -r glibc $PREFIX
   cd ..
+}
+
+function wintricks_install {
+  cd "$(mktemp -d)"
+  cat > update_winetricks <<_EOF_SCRIPT
+  #!/bin/sh
+
+  cd "\$(mktemp -d)"
+  wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+  wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
+  chmod +x winetricks
+  sh -c 'mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks'
+  _EOF_SCRIPT
+
+  chmod +x update_winetricks
+  sh -c 'mv update_winetricks /usr/bin/'
 }
 
 function setup_termux {
@@ -143,7 +161,7 @@ pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
 pkg install -y glibc-runner
 pkg install -y mesa-vulkan-icd-freedreno-glibc mangohud-glibc 
-    mesa-zink-glibc box64-glibc
+    mesa-zink-glibc box64-glibc vulkan-volk-glibc
 pkg install -y \
     libxcb-glibc libxcomposite-glibc libxcursor-glibc libxfixes-glibc \
     libxrender-glibc libgcrypt-glibc libgpg-error-glibc libice-glibc \
@@ -158,7 +176,12 @@ pkg install -y mesa-zink-dev virglrenderer-mesa-zink* virgl_test_server* freetyp
     xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
     libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms \
     xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
-pkg install -y virglrenderer-mesa-zink box64-glibc
+pkg install -y virglrenderer-mesa-zink box64-glibc vulkan-volk-glibc
+pip install socket
+pip install struct
+pip install subprocess
+pip install re
+pip install threading
 termux-setup-storage
 setup_termux
 
@@ -171,34 +194,25 @@ fi
 if [ $termux_hangover = true ] ; then
   tput setab 8
   echo
-  printf "$(tput setaf 2)Install bionic hangover (y/n)? $(tput setaf 1)(experimental)! :"
-  echo
-  read answer
+  printf "$(tput setaf 2)Install bionic hangover... $(tput setaf 1)(experimental)! :"
   tput setab 0
-  if [ "$answer" != "${answer#[Yy]}" ] ;then 
-      echo Yes
-      tput setaf 3;
-      
-      pkg in hangover*
+  tput setaf 3;
+  
+  pkg in hangover*
 
-      cp hangover $PREFIX/bin
-      cd $HOME
-      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.22/wine_hangover_9.22_bionic_build_patched.tar.xz
-      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/turnip-termux-08.05.24_build.zip
-      wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/box64cpu_hangover9.5.zip
-      tar -xvf wine_hangover_9.22_bionic_build_patched.tar.xz
-      unzip -o turnip-termux-08.05.24_build.zip -d $PREFIX/..
-      unzip -o box64cpu_hangover9.5.zip -d wine_hangover/arm64-v8a/lib/wine/aarch64-windows
-      gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
-      gio trash turnip-termux-08.05.24_build.zip
-      gio trash box64cpu_hangover9.5.zip
+  cp hangover $PREFIX/bin
+  cd $HOME
+  wget https://github.com/alexvorxx/hangover-termux/releases/download/9.22/wine_hangover_9.22_bionic_build_patched.tar.xz
+  wget https://github.com/alexvorxx/hangover-termux/releases/download/9.5/box64cpu_hangover9.5.zip
+  tar -xvf wine_hangover_9.22_bionic_build_patched.tar.xz
+  unzip -o box64cpu_hangover9.5.zip -d wine_hangover/arm64-v8a/lib/wine/aarch64-windows
+  gio trash hangover_9.5_bionic_box64upd_termux_5patches.tar.xz
+  gio trash box64cpu_hangover9.5.zip
 
-      cd $dir
-      hangover boot
-      WINEPREFIX=$HOME/.wine ./dxvk_in.sh
-  else
-      echo No
-  fi
+  cd $dir
+  hangover boot
+  WINEPREFIX=$HOME/.wine ./dxvk_in.sh
+  
   tput setaf 255;
 fi
 
@@ -211,6 +225,11 @@ if [ distro = true ] ; then
     fi
     cd $HOME/proot-hwac
     proot-distro login $name --shared-tmp -- $proot_arg
+fi
+
+if [ $winepad_in = true ] ; then
+    cd $dir
+    ./winepad_in.sh
 fi
 
 cd $dir
@@ -232,6 +251,7 @@ echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
 echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
+echo "alias winepad='python $dir/tools/unix_udp_bridge.py'" >> ~/.bashrc
 source ~/.bashrc
 sleep 1
 
