@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-version="9.6"
+version="9.21"
 mod="" #-staging
 type="" #-tgk
 
