@@ -8,7 +8,7 @@ fi
 export WINEESYNC=1
 export WINEESYNC_TERMUX=1
 
-export WINEDLLOVERRIDES="${WINEDLLOVERRIDES},d3d11,d3d10,dxgi,d3d9=n,b"
+#export WINEDLLOVERRIDES="${WINEDLLOVERRIDES},d3d11,d3d10,dxgi,d3d9=n,b"
 
 export VK_ICD_FILENAMES=$PREFIX/glibc/share/vulkan/icd.d/freedreno_icd.aarch64.json
 export DXVK_ASYNC=1
