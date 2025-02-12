@@ -13,11 +13,13 @@ fi
 
 mv termux-hwac termux-old
 
+update_winetricks
+
 echo "Cloning repository..."
 if git clone https://github.com/moio9/termux-hwac.git; then
     echo "Repository cloned succesfull."
 else
-    echo "Eroare at cloning repository."
+    echo "Error at cloning repository."
     exit 1
 fi
 
