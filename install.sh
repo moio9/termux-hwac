@@ -236,9 +236,6 @@ cd $dir
 
 termux-libs
 winetricks_install
-if [ -f "$PREFIX/bin/update_winetricks" ]; then
-    update_winetricks
-fi
 chmod +x bine.sh
 chmod +x dxvk_in.sh
 chmod +x wine_in.sh
