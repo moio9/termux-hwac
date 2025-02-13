@@ -12,6 +12,7 @@ desktop_termux=true
 termux_hangover=true
 update=false
 winepad_in=true
+bootx=true
 
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 dir=$(pwd)
@@ -242,6 +243,12 @@ if [ $winepad_in = true ] ; then
     ./winepad_in.sh
 fi
 
+if [ bootx = true ] ; then
+    cd
+    mkdir -p ~/.termux
+    echo "allow-external-apps=true" > ~/.termux/termux.properties
+fi
+
 cd $dir
 
 termux-libs
@@ -264,6 +271,7 @@ echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
 echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 echo "alias winepad='python $dir/tools/unix_udp_bridge.py'" >> ~/.bashrc
 source ~/.bashrc
+termux-reload-settings
 sleep 1
 
 tput setaf 13; ./support.sh tput setaf 0;
