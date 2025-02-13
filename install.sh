@@ -85,10 +85,10 @@ function wintricks_install {
   wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
   chmod +x winetricks
   sh -c 'mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks'
-  _EOF_SCRIPT
+_EOF_SCRIPT
 
   chmod +x update_winetricks
-  sh -c 'mv update_winetricks /usr/bin/'
+  sh -c "mv update_winetricks $PREFIX/bin/"
 }
 
 function setup_termux {
