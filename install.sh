@@ -84,7 +84,7 @@ cd "\$(mktemp -d)"
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
 chmod +x winetricks
-sh -c 'mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks'
+sh -c "mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks"
 _EOF_SCRIPT
 
   chmod +x update_winetricks
