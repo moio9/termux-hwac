@@ -13,7 +13,10 @@ fi
 
 mv termux-hwac termux-old
 
-update_winetricks
+if [ -f "$PREFIX/bin/update_winetricks" ]; then
+    update_winetricks
+fi
+
 
 echo "Cloning repository..."
 if git clone https://github.com/moio9/termux-hwac.git; then
