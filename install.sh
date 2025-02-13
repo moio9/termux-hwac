@@ -75,7 +75,7 @@ function termux-libs {
   cd ..
 }
 
-function wintricks_install {
+function winetricks_install {
   set -e  # Exit script if any command fails
   PREFIX="${PREFIX:-/data/data/com.termux/files/usr}"
 
