@@ -221,7 +221,7 @@ if [ $termux_hangover = true ] ; then
   gio trash box64cpu_hangover9.5.zip
 
   cd $dir
-  hangover boot
+  hangover-wine boot
   WINEPREFIX=$HOME/.wine ./dxvk_in.sh
   
   tput setaf 255;
