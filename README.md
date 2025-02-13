@@ -6,7 +6,7 @@ chmod +x -R termux-hwac
 cd termux-hwac
 ./install.sh
 ```
-**Use [Termux:x11](https://github.com/termux/termux-x11) or [Termux:x11-Extra](https://github.com/moio9/termux-x11-extra)(Recommanded) for the best support.**
+**Use latest [Termux:x11](https://github.com/termux/termux-x11) or [Termux:x11-Extra](https://github.com/moio9/termux-x11-extra)(Recommanded) for the best support.**
 
 Type 'termux11' to enter xfce session.
 
