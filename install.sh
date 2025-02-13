@@ -236,11 +236,13 @@ cd $dir
 
 termux-libs
 winetricks_install
-update_winetricks
+if [ -f "$PREFIX/bin/update_winetricks" ]; then
+    update_winetricks
+fi
 chmod +x bine.sh
 chmod +x dxvk_in.sh
 chmod +x wine_in.sh
-chmod +x "/Desktop/Wine Explorer.desktop"
+chmod +x "$HOME/Desktop/Wine Explorer.desktop"
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
