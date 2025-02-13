@@ -76,20 +76,30 @@ function termux-libs {
 }
 
 function wintricks_install {
+  set -e  # Exit script if any command fails
+  PREFIX="${PREFIX:-/data/data/com.termux/files/usr}"
+
   cd "$(mktemp -d)"
-cat > update_winetricks <<_EOF_SCRIPT
+
+  cat > update_winetricks <<_EOF_SCRIPT
 #!/bin/sh
+set -e
 
 cd "\$(mktemp -d)"
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
 chmod +x winetricks
-sh -c "mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks"
+mv winetricks "$PREFIX/bin"
+mv winetricks.bash-completion "$PREFIX/share/bash-completion/completions/winetricks"
 _EOF_SCRIPT
 
   chmod +x update_winetricks
-  sh -c "mv update_winetricks $PREFIX/bin/"
+  mv update_winetricks "$PREFIX/bin/"
+
+  # Execute the script to ensure Winetricks is installed
+  "$PREFIX/bin/update_winetricks"
 }
+
 
 function setup_termux {
   echo 'Termux Desktop alias is termux11'
