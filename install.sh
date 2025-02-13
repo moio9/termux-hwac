@@ -77,14 +77,14 @@ function termux-libs {
 
 function wintricks_install {
   cd "$(mktemp -d)"
-  cat > update_winetricks <<_EOF_SCRIPT
-  #!/bin/sh
+cat > update_winetricks <<_EOF_SCRIPT
+#!/bin/sh
 
-  cd "\$(mktemp -d)"
-  wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-  wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
-  chmod +x winetricks
-  sh -c 'mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks'
+cd "\$(mktemp -d)"
+wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
+chmod +x winetricks
+sh -c 'mv winetricks $PREFIX/bin ; mv winetricks.bash-completion $PREFIX/share/bash-completion/completions/winetricks'
 _EOF_SCRIPT
 
   chmod +x update_winetricks
