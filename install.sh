@@ -271,7 +271,7 @@ echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
 echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
-echo "alias winepad='python $dir/tools/unix_udp_bridge.py'" >> ~/.bashrc
+echo "alias winepad='python $dir/tools/connect_gamepad.py'" >> ~/.bashrc
 source ~/.bashrc
 termux-reload-settings
 sleep 1
