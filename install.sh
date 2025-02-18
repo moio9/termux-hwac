@@ -166,7 +166,7 @@ pkg install -y \
     libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
     libxkbfile libpciaccess xcb-util-renderutil xcb-util-image \
     xcb-util-keysyms xcb-util-wm xorg-xkbcomp xkeyboard-config \
-    libxdamage libxinerama libxshmfence neofetch mousepad
+    libxdamage libxinerama libxshmfence neofetch mousepad stracer
 pkg install -y vulkan-tools vulkan-loader-android mesa-zink
 pkg install -y mesa-vulkan-icd-freedreno mesa-zink
 pkg install -y glibc-repo
@@ -188,11 +188,8 @@ pkg install -y mesa-zink-dev virglrenderer-mesa-zink* virgl_test_server* freetyp
     libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms \
     xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
 pkg install -y virglrenderer-mesa-zink box64-glibc vulkan-volk-glibc
-pip install socket
-pip install struct
-pip install subprocess
-pip install re
-pip install threading
+pip install psutil
+
 termux-setup-storage
 setup_termux
 
