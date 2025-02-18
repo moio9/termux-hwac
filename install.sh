@@ -224,10 +224,16 @@ if [ $termux_hangover = true ] ; then
   hangover-wine boot
   WINEPREFIX=$HOME/.wine ./dxvk_in.sh
 
-  sed -i '/^exec/i \\if [ ! -d "$WINEPREFIX" ]; then\\n\\
-  echo "Prefix $WINEPREFIX does not exist, running configuring script..."\\n\\ 
-  $GLIBC_BIN/box64 /data/data/com.termux/files/usr/opt/hangover-wine/bin/wine boot\\n\\
-  $TERMUX_HWAC/wine_tweaks.sh hangover\\nfi' /data/data/com.termux/files/usr/bin/hangover-wine
+  sed -i '/^exec/i \
+  if [ -z "$WINEPREFIX" ]; then\
+    export WINEPREFIX="$HOME/.wine";\
+  fi;\
+  if [ ! -d "$WINEPREFIX" ]; then\
+    echo "Prefix $WINEPREFIX does not exist, running configuring script...";\
+    /data/data/com.termux/files/usr/opt/hangover-wine/bin/wine boot;\
+    $TERMUX_HWAC/wine_tweaks.sh hangover;\
+    exit;\
+  fi' /data/data/com.termux/files/usr/bin/hangover-wine
   
   tput setaf 255;
 fi
@@ -267,6 +273,7 @@ chmod +x wine_in.sh
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
+./wine_tweaks.sh
 ./dxvk_in.sh
 launcher
 pkg upgrade
@@ -275,6 +282,7 @@ echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && ch
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
 echo "export TERMUX_HWAC=$dir" >> ~/.bashrc
+echo "export WINE=hangover-wine" >> ~/.bashrc
 echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
 echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 echo "alias winepad='python $dir/tools/connect_gamepad.py'" >> ~/.bashrc
