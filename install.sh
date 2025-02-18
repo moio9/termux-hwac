@@ -273,7 +273,8 @@ chmod +x wine_in.sh
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
-./wine_tweaks.sh
+./wine_tweaks.sh hang
+./wine_tweaks.sh bine
 ./dxvk_in.sh
 launcher
 pkg upgrade
