@@ -21,6 +21,10 @@ export GLIBC_BIN=$PREFIX/glibc/bin
 LD_PRELOAD_SAVED=$LD_PRELOAD
 unset LD_PRELOAD
 
+if [ ! -d "$WINEPREFIX" ]; then
+    echo "Prefix $WINEPREFIX does not exist, running configuring script..."
+    $TERMUX_HWAC/wine_tweaks.sh bine
+fi
 
 $GLIBC_BIN/box64 $WINE_PATH/bin/wine "$@"
 
