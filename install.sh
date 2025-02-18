@@ -277,6 +277,9 @@ bine boot
 launcher
 pkg upgrade
 
+if [ ! -f ~/.bashrc ]; then
+    touch ~/.bashrc
+fi
 echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
