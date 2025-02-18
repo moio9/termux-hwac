@@ -23,6 +23,7 @@ unset LD_PRELOAD
 
 if [ ! -d "$WINEPREFIX" ]; then
     echo "Prefix $WINEPREFIX does not exist, running configuring script..."
+    $GLIBC_BIN/box64 $WINE_PATH/bin/wine boot
     $TERMUX_HWAC/wine_tweaks.sh bine
 fi
 
