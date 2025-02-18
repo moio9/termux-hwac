@@ -223,6 +223,11 @@ if [ $termux_hangover = true ] ; then
   cd $dir
   hangover-wine boot
   WINEPREFIX=$HOME/.wine ./dxvk_in.sh
+
+  sed -i '/^exec/i \\if [ ! -d "$WINEPREFIX" ]; then\\n\\
+  echo "Prefix $WINEPREFIX does not exist, running configuring script..."\\n\\ 
+  $GLIBC_BIN/box64 /data/data/com.termux/files/usr/opt/hangover-wine/bin/wine boot\\n\\
+  $TERMUX_HWAC/wine_tweaks.sh hangover\\nfi' /data/data/com.termux/files/usr/bin/hangover-wine
   
   tput setaf 255;
 fi
