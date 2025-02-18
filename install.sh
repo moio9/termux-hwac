@@ -271,15 +271,11 @@ chmod +x bine.sh
 chmod +x dxvk_in.sh
 chmod +x wine_in.sh
 cp bine.sh $PREFIX/glibc/bin/bine
-ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
-bine boot
-./dxvk_in.sh
-launcher
+ln -s $PREFIX/glibc/bin/bine $PREFIX/bin || true
+launcher || true
 pkg upgrade
 
-if [ ! -f ~/.bashrc ]; then
-    touch ~/.bashrc
-fi
+
 echo "glibc-runner $PREFIX/glibc/share/jdk/bin/java $@" > $PREFIX/bin/gava && chmod +x $PREFIX/bin/gava
 echo "export GLIBC=$PREFIX/glibc" >> ~/.bashrc
 echo "export GLBIN=$PREFIX/glibc/bin" >> ~/.bashrc
@@ -289,6 +285,8 @@ echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
 echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 echo "alias winepad='python $dir/tools/connect_gamepad.py'" >> ~/.bashrc
 source ~/.bashrc
+bine boot
+./dxvk_in.sh
 ./wine_tweaks.sh hangover
 ./wine_tweaks.sh bine
 termux-reload-settings
