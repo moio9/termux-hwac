@@ -273,8 +273,6 @@ chmod +x wine_in.sh
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin
 bine boot
-./wine_tweaks.sh hangover
-./wine_tweaks.sh bine
 ./dxvk_in.sh
 launcher
 pkg upgrade
@@ -288,6 +286,8 @@ echo "alias cblinc='cd $PREFIX/glibc/bin'" >> ~/.bashrc
 echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 echo "alias winepad='python $dir/tools/connect_gamepad.py'" >> ~/.bashrc
 source ~/.bashrc
+./wine_tweaks.sh hangover
+./wine_tweaks.sh bine
 termux-reload-settings
 sleep 1
 
