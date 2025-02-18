@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/data/data/com.termux/files/usr/bin/env bash
 
 export WINE_PATH=$PREFIX/glibc/wine
 if [ -z "$WINEPREFIX" ]; then
