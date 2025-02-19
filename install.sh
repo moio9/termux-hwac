@@ -102,7 +102,7 @@ export WINE="$PREFIX/glibc/wine/bin/wine.sh"
 if [ -z "$WINEPREFIX" ]; then
     export WINEPREFIX="$PREFIX/glibc/.wine"
 fi
-winetricks $@
+winetricks "$@"
 _EOF_SCRIPT
 
   chmod +x update_winetricks
