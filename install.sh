@@ -94,8 +94,21 @@ mv winetricks "$PREFIX/bin"
 mv winetricks.bash-completion "$PREFIX/share/bash-completion/completions/winetricks"
 _EOF_SCRIPT
 
+  cat > binetricks <<_EOF_SCRIPT
+#!/bin/sh
+ln -s "$PREFIX/bin/bine" "$PREFIX/glibc/wine/bin/wine.sh"
+chmod +x "$PREFIX/glibc/wine/bin/wine.sh"
+export WINE="$PREFIX/glibc/wine/bin/wine.sh"
+if [ -z "$WINEPREFIX" ]; then
+    export WINEPREFIX="$PREFIX/glibc/.wine"
+fi
+winetricks $@
+_EOF_SCRIPT
+
   chmod +x update_winetricks
+  chmod +x binetricks
   mv update_winetricks "$PREFIX/bin/"
+  mv binetricks "$PREFIX/bin/"
 
   # Execute the script to ensure Winetricks is installed
   "$PREFIX/bin/update_winetricks"
