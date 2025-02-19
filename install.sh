@@ -283,7 +283,7 @@ echo "alias kys='killall -u $(whoami)'" >> ~/.bashrc
 echo "alias winepad='python $dir/tools/connect_gamepad.py'" >> ~/.bashrc
 source ~/.bashrc
 bine boot
-./dxvk_in.sh
+./dxvk_in.sh || true
 ./wine_tweaks.sh hangover
 ./wine_tweaks.sh bine
 termux-reload-settings
