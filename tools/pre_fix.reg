@@ -52,3 +52,8 @@ Windows Registry Editor Version 5.00
 "xinput1_2"="native,builtin"
 "xinput1_3"="native,builtin"
 "xinput9_1_0"="native,builtin"
+
+[HKEY_CURRENT_USER\Software\Wine\Drives]
+"D:"="string:/storage/emulated/0"  ; Montează stocarea Android ca D:
+"E:"="string:/data/data/com.termux/files/home"  ; Montează directorul home din Termux ca E:
+"F:"="string:/data/data/com.termux/files/usr"
