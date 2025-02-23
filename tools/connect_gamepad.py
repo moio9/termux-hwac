@@ -114,7 +114,7 @@ def process_input(data):
 			return struct.unpack('h', bytes([int(byte_list[0].replace("x", "0x"), 16), int(byte_list[1].replace("x", "0x"), 16)]))[0]
 		return 0
 
-	if data.startswith("\\x0e\\x"):  # Axele controllerului
+	if data.startswith("\\x0f\\x"):  # Axele controllerului
 		axisX = decode_signed_int(raw[4:6])
 		axisY = decode_signed_int(raw[6:8])
 		axisID = decode_signed_int(raw[8:9])
@@ -141,7 +141,7 @@ def process_input(data):
 
 			gamepad_state["dpad"] = dpad
 
-	elif data.startswith("\\x06\\x"):  # Butoane
+	elif data.startswith("\\x07\\x"):  # Butoane
 		buttonID = decode_signed_int(raw[3:4])
 		pressed = raw[5] == "x01"
 
