@@ -15,7 +15,7 @@ def get_pid(process_name):
 
 def clean_output(data):
     """ Elimină complet liniile care încep cu anumite caractere și șterge secvențele inutile. """
-    if data.startswith(("\\x01\\x0", "\\x07\\", "\\x05", "\\x02")):
+    if data.startswith(("\\x01\\x0", "\\x05\\", "\\x05", "\\x02")):
         return None  # Ignoră complet aceste linii
 
     cleaned = re.sub(r'\\1\\0{7}', '', data)
