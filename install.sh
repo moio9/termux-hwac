@@ -38,20 +38,20 @@ EOF
 
 function set_default_exe_handler {
     local WRAPPER_PATH="$PREFIX/bin/hangover-run.sh"
-    local CMD_NAME
-    CMD_NAME="$(basename "$WRAPPER_PATH")"               
-    local DESKTOP_ID="run-with-${CMD_NAME%.sh}.desktop"  
-    local APP_DIR="$HOME/Desktop"
+    local CMD_NAME="$(basename "$WRAPPER_PATH")"               
+    local DESKTOP_ID="run-with-${CMD_NAME%.sh}.desktop"        
+    local DESKTOP_DIR="$HOME/Desktop"
+    local APP_DIR="$HOME/.local/share/applications"
     local MIMEAPPS="$HOME/.config/mimeapps.list"
 
-    mkdir -p "$APP_DIR" "$(dirname "$MIMEAPPS")"
+    mkdir -p "$DESKTOP_DIR" "$APP_DIR" "$(dirname "$MIMEAPPS")"
 
     cat > "$APP_DIR/$DESKTOP_ID" <<-EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=Run with Hangover-Wine
-Comment=Cd la folder și rulează .exe cu hangover-wine
+Comment=Run .exe with hangover-wine
 Exec=$WRAPPER_PATH %f
 Icon=application-x-ms-dos-executable
 Terminal=false
@@ -62,8 +62,11 @@ EOF
 
     chmod +x "$APP_DIR/$DESKTOP_ID"
 
-    command -v update-desktop-database &>/dev/null \
-      && update-desktop-database "$APP_DIR" &>/dev/null
+    if command -v update-desktop-database &>/dev/null; then
+      update-desktop-database "$APP_DIR" &>/dev/null
+    fi
+
+    cp "$APP_DIR/$DESKTOP_ID" "$DESKTOP_DIR/"
 
     grep -qxF '[Default Applications]' "$MIMEAPPS" 2>/dev/null \
       || printf '\n[Default Applications]\n' >> "$MIMEAPPS"
