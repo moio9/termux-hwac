@@ -43,6 +43,20 @@ BUTTON_MAP = {
 	70: BUTTON_R3
 }
 
+BUTTON_MAP2 = {
+	1: BUTTON_A,
+	2: BUTTON_B,
+	3: BUTTON_Y,
+	4: BUTTON_X,
+	5: BUTTON_L1,
+	6: BUTTON_R1,
+	7: BUTTON_START,
+	8: BUTTON_SELECT,
+	9: BUTTON_HOME,
+	10: BUTTON_L3,
+	11: BUTTON_R3
+}
+
 # Stare gamepad
 gamepad_state = {
 	"buttons": 0,
@@ -115,9 +129,17 @@ def process_input(data):
 		return 0
 
 	if data.startswith("\\x0f\\x"):  # Axele controllerului
+		buttonID = decode_signed_int(raw[2:3])
+		pressed = raw[3] == "x01"
 		axisX = decode_signed_int(raw[4:6])
 		axisY = decode_signed_int(raw[6:8])
 		axisID = decode_signed_int(raw[8:9])
+		
+		if buttonID in BUTTON_MAP2:
+			if pressed:
+				gamepad_state["buttons"] |= (1 << BUTTON_MAP2[buttonID])
+			else:
+				gamepad_state["buttons"] &= ~(1 << BUTTON_MAP2[buttonID])
 
 		if axisID == 0:  # Stick stânga
 			gamepad_state["thumb_lx"] = axisX
