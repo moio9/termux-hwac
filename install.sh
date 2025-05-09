@@ -17,54 +17,123 @@ bootx=true
 proot_arg="$HOME/proot-hwac/setup-proot.sh"
 dir=$(pwd)
 
+function install_wine_wrapper {
+    local WRAPPER="$PREFIX/bin/hangover-run.sh"
+
+    cat > "$WRAPPER" << 'EOF'
+#!/data/data/com.termux/files/usr/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 /path/to/file.exe"
+  exit 1
+fi
+
+FILE="$1"
+cd "$(dirname "$FILE")" || exit
+exec hangover-wine "$FILE"
+EOF
+
+    chmod +x "$WRAPPER"
+}
+
+function set_default_exe_handler {
+    local WRAPPER_PATH="$PREFIX/bin/hangover-run.sh"
+    local CMD_NAME
+    CMD_NAME="$(basename "$WRAPPER_PATH")"               
+    local DESKTOP_ID="run-with-${CMD_NAME%.sh}.desktop"  
+    local APP_DIR="$HOME/Desktop"
+    local MIMEAPPS="$HOME/.config/mimeapps.list"
+
+    mkdir -p "$APP_DIR" "$(dirname "$MIMEAPPS")"
+
+    cat > "$APP_DIR/$DESKTOP_ID" <<-EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Run with Hangover-Wine
+Comment=Cd la folder și rulează .exe cu hangover-wine
+Exec=$WRAPPER_PATH %f
+Icon=application-x-ms-dos-executable
+Terminal=false
+StartupNotify=false
+MimeType=application/x-ms-dos-executable;
+Categories=Utility;
+EOF
+
+    chmod +x "$APP_DIR/$DESKTOP_ID"
+
+    command -v update-desktop-database &>/dev/null \
+      && update-desktop-database "$APP_DIR" &>/dev/null
+
+    grep -qxF '[Default Applications]' "$MIMEAPPS" 2>/dev/null \
+      || printf '\n[Default Applications]\n' >> "$MIMEAPPS"
+    sed -i '/^application\/x-ms-dos-executable=/d' "$MIMEAPPS"
+    printf 'application/x-ms-dos-executable=%s;\n' "$DESKTOP_ID" >> "$MIMEAPPS"
+}
+
 function launcher {
-    mkdir '/data/data/com.termux/files/home/Desktop/'
-    echo "[Desktop Entry]
-    Version=1.0
-    Type=Application
-    Name=Wine Explorer
-    Comment=Wine File Manager
-    Exec=bine explorer
-    Icon=xfwm4-default
-    Path=
-    Terminal=false
-    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Wine Explorer.desktop'
+    mkdir -p "$HOME/Desktop"
 
     echo "[Desktop Entry]
-    Version=1.0
-    Type=Application
-    Name=Wine Config
-    Comment=Wine Config Manager
-    Exec=bine winecfg
-    Icon=gtk-page-setup
-    Path=
-    Terminal=false
-    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Wine Config.desktop'
+Version=1.0
+Type=Application
+Name=Wine Explorer
+Comment=Wine File Manager
+Exec=bine explorer
+Icon=xfwm4-default
+Path=
+Terminal=false
+StartupNotify=false" > "$HOME/Desktop/Wine Explorer.desktop"
 
     echo "[Desktop Entry]
-    Version=1.0
-    Type=Application
-    Name=Hang Explorer
-    Comment=Wine Explorer Manager Hangover
-    Exec=hangover-hangover explorer
-    Icon=gtk-caps-lock-warning
-    Path=
-    Terminal=false
-    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Hang Explorer.desktop'
+Version=1.0
+Type=Application
+Name=Wine Config
+Comment=Wine Config Manager
+Exec=bine winecfg
+Icon=gtk-page-setup
+Path=
+Terminal=false
+StartupNotify=false" > "$HOME/Desktop/Wine Config.desktop"
 
     echo "[Desktop Entry]
-    Version=1.0
-    Type=Application
-    Name=Hang Config
-    Comment=Wine Config Manager Hangover
-    Exec=hangover-wine winecfg
-    Icon=org.xfce.xfwm4-tweaks
-    Path=
-    Terminal=false
-    StartupNotify=false" > '/data/data/com.termux/files/home/Desktop/Hang Config.desktop'
+Version=1.0
+Type=Application
+Name=Hang Explorer
+Comment=Wine Explorer Manager Hangover
+Exec=hangover-hangover explorer
+Icon=gtk-caps-lock-warning
+Path=
+Terminal=false
+StartupNotify=false" > "$HOME/Desktop/Hang Explorer.desktop"
 
-    echo "pkill -9 -f wine
-    pkill -9 -f .exe "> '/data/data/com.termux/files/home/Desktop/Wine Killer.sh'
+    echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Hang Config
+Comment=Wine Config Manager Hangover
+Exec=hangover-wine winecfg
+Icon=org.xfce.xfwm4-tweaks
+Path=
+Terminal=false
+StartupNotify=false" > "$HOME/Desktop/Hang Config.desktop"
+
+    echo "[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Controller
+Comment=Gamepad Connector
+Exec=$HOME/termux-hwac/tools/connect_gamepad.py
+Icon=input-gaming
+Path=
+Terminal=true
+StartupNotify=false" > "$HOME/Desktop/Controller.desktop"
+
+    echo -e "#!/data/data/com.termux/files/usr/bin/bash\npkill -9 -f wine\npkill -9 -f \\.EXE\npkill -9 -f \\.exe" \
+        > "$HOME/Desktop/Wine Killer.sh" && chmod +x "$HOME/Desktop/Wine Killer.sh"
+
+    install_wine_wrapper
+    set_default_exe_handler
 }
 
 function termux-libs {
@@ -75,6 +144,7 @@ function termux-libs {
   cp -r glibc $PREFIX
   cd ..
 }
+
 
 function winetricks_install {
   set -e  # Exit script if any command fails
