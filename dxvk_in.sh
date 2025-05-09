@@ -1,14 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-version=2.5.3-1
+version=2.6.1-1
 sp=$(pwd)
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 
 if [ "$1" == "--default" ]; then
-    export WINEPREFIX="$HOME/.wine"
+    export WINEPREFIX=$PREFIX/glibc/.wine
     echo "Using default Wine prefix: $WINEPREFIX"
 else
     if [ -z "$WINEPREFIX" ]; then
-        export WINEPREFIX=$PREFIX/glibc/.wine
+     	export WINEPREFIX="$HOME/.wine"
         echo "Using custom Wine prefix: $WINEPREFIX"
     fi
 fi
@@ -16,6 +18,11 @@ fi
 if ! command -v gio &> /dev/null; then
     echo "missing gio"
 fi
+
+
+echo "Configuring prefix..."
+cd $SCRIPT_DIR
+./wine_tweaks.sh hangover
 
 if [ ! -d "dxvk-gplasync-v$version" ]; then
     mkdir -p $PREFIX/glibc/dxvk
@@ -38,6 +45,7 @@ cp x64/*.dll $WINEPREFIX/drive_c/windows/system32 || echo "Failed x64."
 cp x32/*.dll $WINEPREFIX/drive_c/windows/syswow64 || echo "Failed x32."
 
 USER_REG="$WINEPREFIX/user.reg"
+
 
 if [ -f "$USER_REG" ]; then
     echo "Adding overrides for DXVK în $USER_REG..."
