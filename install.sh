@@ -243,6 +243,7 @@ if [ "$update" = true ];
 termux-setup-storage
 pkg update 
 pkg upgrade -y
+pkg install -y python
 pkg install -y tur-repo x11-repo
 pkg install -y pulseaudio termux-x11-nightly proot-distro wget
 pkg install -y \
@@ -267,13 +268,14 @@ pkg install -y \
 pkg install -y pulseaudio-glibc libx*-*glibc*
 pkg install -y libgmp-glibc
 pkg install -y fex
-pkg install -y mesa-zink-dev virglrenderer-mesa-zink* virgl_test_server* freetype gnutls \
+pkg install -y mesa-zink-dev virglrenderer-mesa-zink* freetype gnutls \
     libandroid-shmem-static libx11 xorgproto libdrm libpixman libxfixes \
     libjpeg-turbo mesa-demos osmesa pulseaudio termux-x11-nightly vulkan-tools \
     xtrans libxxf86vm xorg-xrandr xorg-font-util xorg-util-macros libxfont2 \
     libxkbfile libpciaccess xcb-util-renderutil xcb-util-image xcb-util-keysyms \
     xcb-util-wm xorg-xkbcomp xkeyboard-config libxdamage libxinerama libxshmfence
 pkg install -y virglrenderer-mesa-zink box64-glibc vulkan-volk-glibc
+pkg install virglrenderer-android
 pip install psutil
 
 termux-setup-storage
@@ -353,6 +355,8 @@ cd $dir
 chmod +x bine.sh
 chmod +x dxvk_in.sh
 chmod +x wine_in.sh
+chmod +x wine_tweaks.sh
+chmod +x support.sh
 cp bine.sh $PREFIX/glibc/bin/bine
 ln -s $PREFIX/glibc/bin/bine $PREFIX/bin || true
 launcher || true
